@@ -26,3 +26,10 @@ jobs:
       uses: gradle/gradle-build-action@v2
     - name: Run build with Gradle Wrapper
       run: ./gradlew build
+    - name: Build and Push Docker image
+      uses: mr-smithers-excellent/docker-build-push@v6
+      with:
+        image: jelilio/spring-demo-api
+        registry: docker.io
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_TOKEN }}

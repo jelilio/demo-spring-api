@@ -12,17 +12,13 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
 jobs:
-  build:
-
+  build-gradle-project:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-        
+    - name: Checkout project sources
+      uses: actions/checkout@v3
     - name: Setup Gradle
       uses: gradle/gradle-build-action@v2
-    
-    - name: Build with Gradle Wrapper
-      uses: ./gradlew build
+    - name: Run build with Gradle Wrapper
+      run: ./gradlew build
